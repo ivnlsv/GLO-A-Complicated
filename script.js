@@ -1,12 +1,47 @@
-let num = 266219;
-let strNum = String(num);
-let result = 1;
-console.log(strNum)
-for (let i = 0; i < strNum.length; i++) {
-    result *= Number(strNum[i]);
-    
+let lang = "ru";
+weekDaysRu = "Пн, Вт, Ср, Чт, Пт, Сб, Вс";
+weekDaysEng = "Mon, Tue, Web, Thu, Fri, Sat, Sun";
+
+if (lang === "ru") {
+  console.log(weekDaysRu);
+} else {
+  console.log(weekDaysEng);
 }
-console.log(result);
-let degree = result ** 3;
-let strDegree = String(degree);
-console.log(strDegree.slice(0, 2));
+
+switch (lang) { 
+    case "ru":
+        console.log(weekDaysRu);
+        break;
+    case "en":
+        console.log(weekDaysEng);
+        break;
+}
+
+let weekDaysArray = {
+  ru: ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"],
+  en: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+};
+
+let days = weekDaysArray[lang]; 
+
+console.log(days);
+
+let namePerson = "Александр";
+let statusPerson = (namePerson === "Артем")
+    ? "Директор"
+    : (namePerson === "Александр")
+        ? "Преподаватель"
+        : "Студент";
+console.log(statusPerson); 
+
+
+
+
+
+
+
+
+
+
+
+
