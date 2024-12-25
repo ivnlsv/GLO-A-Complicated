@@ -1,12 +1,13 @@
-function processString(input) {
+let strInput = "loremasakfaslkfjalsflaslfalksfklajlskfjlkajslfalksfjlkajsfalksfjklajlsfkjlsfjlkslkdfjklsjdfkljlsjdflsjl";
+function inputString(input) {
     if (typeof input !== 'string') {
-        alert('Необходимо передать строку');
+        alert('Это не строка. Необходимо передать строку');
         return;
     }
     input = input.trim();
     if (input.length > 30) {
         input = input.slice(0, 30) + '...';
     }
-
-    console.log(input);
+    return input;
 }
+console.log(inputString(strInput));
