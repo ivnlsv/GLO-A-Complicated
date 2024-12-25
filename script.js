@@ -1,47 +1,12 @@
-let lang = "ru";
-weekDaysRu = "Пн, Вт, Ср, Чт, Пт, Сб, Вс";
-weekDaysEng = "Mon, Tue, Web, Thu, Fri, Sat, Sun";
+function processString(input) {
+    if (typeof input !== 'string') {
+        alert('Необходимо передать строку');
+        return;
+    }
+    input = input.trim();
+    if (input.length > 30) {
+        input = input.slice(0, 30) + '...';
+    }
 
-if (lang === "ru") {
-  console.log(weekDaysRu);
-} else {
-  console.log(weekDaysEng);
+    console.log(input);
 }
-
-switch (lang) { 
-    case "ru":
-        console.log(weekDaysRu);
-        break;
-    case "en":
-        console.log(weekDaysEng);
-        break;
-}
-
-let weekDaysArray = {
-  ru: ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"],
-  en: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-};
-
-let days = weekDaysArray[lang]; 
-
-console.log(days);
-
-let namePerson = "Александр";
-let statusPerson = (namePerson === "Артем")
-    ? "Директор"
-    : (namePerson === "Александр")
-        ? "Преподаватель"
-        : "Студент";
-console.log(statusPerson); 
-
-
-
-
-
-
-
-
-
-
-
-
