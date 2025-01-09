@@ -1,19 +1,23 @@
-const week = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
+document.addEventListener('DOMContentLoaded', () => {
+  const week = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
 
-const today = new Date();
-const currentDay = today.getDay(); 
-const currentDayIndex = currentDay === 0 ? 6 : currentDay - 1; 
+  const today = new Date();
+  const currentDay = today.getDay();
+  const currentDayIndex = currentDay === 0 ? 6 : currentDay - 1;
+  const weekDaysDiv = document.getElementById('weekDays');
 
-week.forEach((day, index) => {
-    if (index === 5 || index === 6) { 
-        console.log(`%c${day}`, 'font-style: italic;');
+  week.forEach((day, index) => {
+    const dayItem = document.createElement('p');
+    if (index === 5 || index === 6) {
+      dayItem.className = 'italic';
     } else if (index === currentDayIndex) {
-        console.log(`%c${day}`, 'font-weight: bold;');
-    } else {
-        console.log(day);
+      dayItem.className = 'bold';
     }
+    dayItem.textContent = day;
+    weekDaysDiv.appendChild(dayItem);
+    
+  });
 });
-
 
 
 
