@@ -41,11 +41,8 @@ function dateTime() {
     "ноября",
     "декабря",
   ];
-  //const now = new Date();
-  //const weekday = now.toLocaleString('ru-RU', { weekday: 'long' });
   const weekday = days[now.getDay()];
   const day = now.getDate();
-  //const month = now.toLocaleString('ru-RU', { month: 'long' });
   const month = months[now.getMonth()];
   const year = now.getFullYear();
   const hours = now.getHours();
