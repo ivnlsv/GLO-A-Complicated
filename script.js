@@ -1,65 +1,39 @@
-function getWordHour(hour) {
-  if (hour % 10 === 1 && hour % 100 !== 11) {
-    return "час";
-  } else if (
-    hour % 10 >= 2 &&
-    hour % 10 <= 4 &&
-    (hour % 100 < 10 || hour % 100 >= 20)
-  ) {
-    return "часа";
-  } else {
-    return "часов";
-  }
+function DomElement(selector, height, width, bg, fontSize) {
+  this.selector = selector;
+  this.height = height;
+  this.width = width;
+  this.bg = bg;
+  this.fontSize = fontSize;
+
+  this.createElement = function() {
+      let element;
+
+      if (this.selector.startsWith('.')) {
+          // Создаем div с классом
+          element = document.createElement('div');
+          element.className = this.selector.slice(1); // Убираем точку
+      } else if (this.selector.startsWith('#')) {
+          // Создаем параграф с id
+          element = document.createElement('p');
+          element.id = this.selector.slice(1); // Убираем решетку
+      }
+
+      // Установим свойства элемента
+      if (element) {
+          element.style.height = this.height;
+          element.style.width = this.width;
+          element.style.background = this.bg;
+          element.style.fontSize = this.fontSize;
+          element.textContent = "Это созданный элемент"; // Текст внутри элемента
+
+          // Добавляем элемент на страницу
+          document.body.appendChild(element);
+      }
+  };
 }
 
-function formatTime(item) {
-  return item < 10 ? "0" + item : item;
-}
+// Создаем новый объект на основе класса DomElement
+const myElement = new DomElement('.my-class', '100px', '200px', 'lightblue', '16px');
 
-function dateTime() {
-  const now = new Date();
-  const days = [
-    "Воскресенье",
-    "Понедельник",
-    "Вторник",
-    "Среда",
-    "Четверг",
-    "Пятница",
-    "Суббота",
-  ];
-  const months = [
-    "января",
-    "февраля",
-    "марта",
-    "апреля",
-    "мая",
-    "июня",
-    "июля",
-    "августа",
-    "сентября",
-    "октября",
-    "ноября",
-    "декабря",
-  ];
-  const weekday = days[now.getDay()];
-  const day = now.getDate();
-  const month = months[now.getMonth()];
-  const year = now.getFullYear();
-  const hours = now.getHours();
-  const minutes = now.getMinutes();
-  const seconds = now.getSeconds();
-
-  const wordHour = getWordHour(hours);
-  const longDate = `Сегодня ${weekday}, ${day} ${month} ${year} года, ${hours} ${wordHour} ${minutes} минут ${seconds} секунд`;
-  const shortDate = `${formatTime(day)}.${formatTime(
-    now.getMonth() + 1
-  )}.${year} - ${formatTime(hours)}:${formatTime(minutes)}:${formatTime(
-    seconds
-  )}`;
-
-  document.getElementById("date-time-full").innerText = longDate;
-  document.getElementById("date-time-short").innerText = shortDate;
-}
-
-setInterval(dateTime, 1000);
-dateTime();
+// Вызываем метод для создания элемента на странице
+myElement.createElement();
