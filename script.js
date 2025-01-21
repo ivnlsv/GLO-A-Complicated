@@ -33,7 +33,7 @@ function DomElement(selector, height, width, bg, fontSize) {
 }
 
 // Создаем новый объект на основе класса DomElement
-const myElement = new DomElement('.my-class', '100px', '200px', 'lightblue', '16px');
+const myElement = new DomElement('.my-class', '100px', '100px', 'lightblue', '16px');
 
 // Вызываем метод для создания элемента на странице
 myElement.createElement();
