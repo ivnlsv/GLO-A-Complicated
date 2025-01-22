@@ -5,7 +5,7 @@ function DomElement(selector, height, width, bg, fontSize) {
   this.bg = bg;
   this.fontSize = fontSize;
 
-  this.createElement = function() {
+  this.createElement = function(text) {
       let element;
 
       if (this.selector.startsWith('.')) {
@@ -18,23 +18,44 @@ function DomElement(selector, height, width, bg, fontSize) {
           element.id = this.selector.slice(1); // Убираем решетку
       }
 
-      // Установим свойства элемента
-      if (element) {
-          element.style.height = this.height;
-          element.style.width = this.width;
-          element.style.background = this.bg;
-          element.style.fontSize = this.fontSize;
-          element.textContent = "Новый элемент"; // Текст внутри элемента
-
-          // Добавляем элемент на страницу
-        document.body.appendChild(element);
-        return element;
+      element.style.cssText = `
+      height: ${this.height}px; 
+      width: ${this.width}px; 
+      background: ${this.bg}; 
+      font-size: ${this.fontSize}px; 
+      position: absolute;
+  `;
+  element.textContent = text || 'Новый элемент';
+  document.body.appendChild(element);
+  return element;
       }
-  };
-}
+ };
+ document.addEventListener("DOMContentLoaded", function() {
+  const square = new DomElement('.square', 100, 100, 'red', 16);
+  const element = square.createElement();
 
-// Создаем новый объект на основе класса DomElement
-const myElement = new DomElement('.my-class', '100px', '100px', 'lightblue', '16px');
+  let position = { x: 0, y: 0 };
 
-// Вызываем метод для создания элемента на странице
-myElement.createElement();
+  function moveElement(event) {
+      switch (event.key) {
+          case 'ArrowUp':
+              position.y -= 10;
+              break;
+          case 'ArrowDown':
+              position.y += 10;
+              break;
+          case 'ArrowLeft':
+              position.x -= 10;
+              break;
+          case 'ArrowRight':
+              position.x += 10;
+              break;
+      }
+      element.style.transform = `translate(${position.x}px, ${position.y}px)`;
+  }
+
+  window.addEventListener('keydown', moveElement);
+});
+
+
+
