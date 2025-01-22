@@ -27,7 +27,8 @@ function DomElement(selector, height, width, bg, fontSize) {
           element.textContent = "Новый элемент"; // Текст внутри элемента
 
           // Добавляем элемент на страницу
-          document.body.appendChild(element);
+        document.body.appendChild(element);
+        return element;
       }
   };
 }
