@@ -24,7 +24,7 @@ function DomElement(selector, height, width, bg, fontSize) {
           element.style.width = this.width;
           element.style.background = this.bg;
           element.style.fontSize = this.fontSize;
-          element.textContent = "Это созданный элемент"; // Текст внутри элемента
+          element.textContent = "Новый элемент"; // Текст внутри элемента
 
           // Добавляем элемент на страницу
           document.body.appendChild(element);
