@@ -18,22 +18,20 @@ function DomElement(selector, height, width, bg, fontSize) {
           element.id = this.selector.slice(1); // Убираем решетку
       }
 
-      // Установим свойства элемента
-      if (element) {
-          element.style.height = this.height;
-          element.style.width = this.width;
-          element.style.background = this.bg;
-          element.style.fontSize = this.fontSize;
-          element.textContent = "Новый элемент"; // Текст внутри элемента
-
-          // Добавляем элемент на страницу
-          document.body.appendChild(element);
+      element.style.cssText = `
+      height: ${this.height}px; 
+      width: ${this.width}px; 
+      background: ${this.bg}; 
+      font-size: ${this.fontSize}px; 
+      position: absolute;
+  `;
+  element.textContent = 'Новый элемент';
+  document.body.appendChild(element);
+  
       }
-  };
-}
+};
+ // Создать новый объект на основе класса DomElement
+const myElement = new DomElement('.block', '100', '100', 'lightblue', '20');
 
-// Создаем новый объект на основе класса DomElement
-const myElement = new DomElement('.my-class', '100px', '100px', 'lightblue', '16px');
-
-// Вызываем метод для создания элемента на странице
+// Вызвать метод, чтобы создать элемент на странице
 myElement.createElement();
