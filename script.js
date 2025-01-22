@@ -31,7 +31,7 @@ function DomElement(selector, height, width, bg, fontSize) {
       }
  };
  document.addEventListener("DOMContentLoaded", function() {
-  const square = new DomElement('.square', 100, 100, 'red', 16);
+  const square = new DomElement('.block', 100, 100, 'lightblue', 16);
   const element = square.createElement();
 
   let position = { x: 0, y: 0 };
